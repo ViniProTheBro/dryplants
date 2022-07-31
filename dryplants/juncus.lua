@@ -41,22 +41,6 @@ minetest.register_node("dryplants:juncus", {
 	selection_box = {
 		type = "fixed",
 		fixed = {-7/16, -1/2, -7/16, 7/16, 0, 7/16},
-	},
-	on_place = function(itemstack, placer, pointed_thing)
-		local pos = pointed_thing.under
-		local juncus_type = math.random(2,3)
-		local right_here = {x=pos.x, y=pos.y+1, z=pos.z}
-		if juncus_type == 2 then
-			minetest.env:add_node(right_here, {name="dryplants:juncus_02"})
-		else
-			minetest.env:add_node(right_here, {name="dryplants:juncus"})
-		end
-		if not minetest.setting_getbool("creative_mode") then
-			itemstack:take_item()
-		end
-		return itemstack
-	end,
-})
 minetest.register_node("dryplants:juncus_02", {
 	description = "Juncus",
 	drawtype = "plantlike",
